@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import { Home } from './pages/home';
 import { Articles } from './pages/articles';
-import { SignIn } from './pages/sign-in';
+import { SignIn } from './pages/signIn';
 
 const App = () => {
 
