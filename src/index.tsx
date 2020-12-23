@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.scss';
-import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import RootStore from './store';
-import { createStore, applyMiddleware } from 'redux';
-import { store } from './store/store';
 
 const store = createStore(RootStore);
 ReactDOM.render(

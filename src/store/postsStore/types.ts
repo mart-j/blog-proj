@@ -1,7 +1,7 @@
 export const GET_POSTS = 'GET_POSTS';
 
 export type Post = {
-  {name: string}
+  name: string;
 };
 
 export type InitialStore = {

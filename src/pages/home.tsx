@@ -6,16 +6,23 @@ import { RootState } from '../store';
 export const Home: FC = () => {
   const dispatch = useDispatch();
 
-  const name = useSelector((state: RootState) => {
-    return state.postsStore.posts.name;
+  const articles = useSelector((state: RootState) => {
+    return state.postsStore.posts;
   });
+
   const clickhandler = () => {
     dispatch(getPosts());
   };
 
   return (
     <div>
-      {name[0] && <div>{JSON.stringify(name)}</div>}
+      {articles.length > 0 && (
+        <div>
+          {articles.map(({ name }, i) => {
+            return <div key={`${i}`}>{name}</div>;
+          })}
+        </div>
+      )}
       <button onClick={clickhandler}>Button</button>
     </div>
   );
