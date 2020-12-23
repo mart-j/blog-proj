@@ -1,40 +1,27 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from 'react-router-dom';
+import React, { FC } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Home } from './pages/home';
 import { Articles } from './pages/articles';
-import { SignIn } from './pages/signIn';
+import { Login } from './pages/signIn';
+import { FourOuFour } from './pages/404';
+import { Header } from './components/header/header';
 
-const App = () => {
-
+const App: FC = () => {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/articles">Articles</Link>
-          </li>
-          <li>
-            <Link to="/sign-in">SignIn</Link>
-          </li>
-        </ul>
-      </nav>
+      <Header />
       <Switch>
-        <Route path="/sign-in">
-          <SignIn />
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
         <Route path="/articles">
           <Articles />
         </Route>
-        <Route path="/">
-          <Home />
+        <Route path="*">
+          <FourOuFour />
         </Route>
       </Switch>
     </Router>
