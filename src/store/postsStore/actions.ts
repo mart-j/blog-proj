@@ -1,8 +1,17 @@
-import { GET_POSTS } from './types';
+import axios from 'axios';
+import { Dispatch } from 'redux';
+import { GET_POSTS, Post } from './types';
 
-export const getPosts = () => {
+const getPostsAction = (posts: Post[]) => {
   return {
     type: GET_POSTS,
-    posts: [{ name: 'Jazeps' }],
+    posts,
   };
+};
+
+export const getPost = (dispatch: Dispatch) => {
+  axios.get('https://jsonplaceholder.typicode.com/posts').then(({ data }) => {
+    // handle success
+    dispatch(getPostsAction(data));
+  });
 };

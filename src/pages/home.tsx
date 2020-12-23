@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getPosts } from '../store/postsStore/actions';
+import { getPost } from '../store/postsStore/actions';
 import { RootState } from '../store';
 
 export const Home: FC = () => {
@@ -9,21 +9,24 @@ export const Home: FC = () => {
   const articles = useSelector((state: RootState) => {
     return state.postsStore.posts;
   });
-
-  const clickhandler = () => {
-    dispatch(getPosts());
-  };
-
+  useEffect(() => {
+    getPost(dispatch);
+  }, []);
   return (
     <div>
       {articles.length > 0 && (
         <div>
-          {articles.map(({ name }, i) => {
-            return <div key={`${i}`}>{name}</div>;
+          {articles.map(({ body }, i) => {
+            return (
+              <>
+                <div key={`${i}`}>{body}</div>
+                <br></br>
+              </>
+            );
           })}
         </div>
       )}
-      <button onClick={clickhandler}>Button</button>
+      {/* <button onClick={() => getPost(dispatch)}>Button</button> */}
     </div>
   );
 };
