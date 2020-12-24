@@ -2,10 +2,9 @@ import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { changeUserAction } from '../store/userStore/actions';
-import { User } from '../store/userStore/types';
 
 export const Login: FC = () => {
-  const [input, setInput] = useState<User>();
+  const [input, setInput] = useState({ email: '', password: '' });
 
   const dispatch = useDispatch();
 
@@ -20,13 +19,20 @@ export const Login: FC = () => {
   return (
     <>
       <h1>{JSON.stringify(user)}</h1>
-      <form action="">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatchHandler();
+          setInput({ email: '', password: '' });
+        }}
+      >
         <label htmlFor="fname">e-mail: </label>
         <input
           onChange={(e) => {
             setInput({ ...input!, email: e.target.value });
           }}
           type="email"
+          value={input.email}
           required
         />
         <br />
@@ -37,12 +43,12 @@ export const Login: FC = () => {
             setInput({ ...input!, password: e.target.value });
           }}
           type="password"
+          value={input.password}
           required
         />
         <br />
         <br />
-        <input onSubmit={dispatchHandler} type="submit" 
-        />
+        <input type="submit" />
       </form>
     </>
   );
