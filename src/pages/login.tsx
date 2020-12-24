@@ -14,23 +14,19 @@ export const Login: FC = () => {
   const userDb = useSelector((state: RootState) => {
     return state.userStore.userDb;
   });
-  const isUserValid = () => {
-    if (JSON.stringify(userDb).includes(JSON.stringify(user))) {
-      console.log('[wepojrg');
-      dispatchHandler();
-    }
-  };
+
   const dispatchHandler = () => {
-    dispatch(changeUserAction(input!));
+    if (JSON.stringify(userDb).includes(JSON.stringify(input))) {
+      dispatch(changeUserAction(input!));
+    }
   };
 
   return (
     <>
-      <h1>{JSON.stringify(user)}</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          isUserValid();
+          dispatchHandler();
           setInput({ email: '', password: '' });
         }}
       >

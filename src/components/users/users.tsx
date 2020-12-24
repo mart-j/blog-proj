@@ -7,5 +7,10 @@ export const Users: FC = () => {
     return state.userStore.user.email;
   });
 
-  return <h5>{currentUser}</h5>;
+  return (
+    <>
+      <h3>{currentUser}</h3>
+      <h5>{currentUser !== 'guest' && <button>sign out</button>}</h5>
+    </>
+  );
 };
