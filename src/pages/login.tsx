@@ -11,7 +11,15 @@ export const Login: FC = () => {
   const user = useSelector((state: RootState) => {
     return state.userStore.user;
   });
-
+  const userDb = useSelector((state: RootState) => {
+    return state.userStore.userDb;
+  });
+  const isUserValid = () => {
+    if (JSON.stringify(userDb).includes(JSON.stringify(user))) {
+      console.log('[wepojrg');
+      dispatchHandler();
+    }
+  };
   const dispatchHandler = () => {
     dispatch(changeUserAction(input!));
   };
@@ -22,7 +30,7 @@ export const Login: FC = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          dispatchHandler();
+          isUserValid();
           setInput({ email: '', password: '' });
         }}
       >

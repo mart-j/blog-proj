@@ -1,5 +1,11 @@
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 export const Users: FC = () => {
-  return <h5>Users</h5>;
+  const currentUser = useSelector((state: RootState) => {
+    return state.userStore.user.email;
+  });
+
+  return <h5>{currentUser}</h5>;
 };

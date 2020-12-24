@@ -2,6 +2,7 @@ export const CHANGE_USER = 'CHANGE_USER';
 
 export type InitialUserStore = {
   user: User;
+  userDb: User[];
 };
 
 export interface AllActions extends InitialUserStore {

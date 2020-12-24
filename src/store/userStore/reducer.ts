@@ -1,13 +1,23 @@
-import { CHANGE_USER, AllActions, User } from './types';
+import { CHANGE_USER, AllActions, User, InitialUserStore } from './types';
 
-export const InitialUserStore: { user: User } = {
+export const initialUserStore: InitialUserStore = {
   user: {
     email: 'guest',
     password: '',
   },
+  userDb: [
+    {
+      email: 'admin@admin.com',
+      password: 'admin',
+    },
+    {
+      email: 'user@user.com',
+      password: 'user',
+    },
+  ],
 };
 
-export const userReducer = (state = InitialUserStore, action: AllActions) => {
+export const userReducer = (state = initialUserStore, action: AllActions) => {
   switch (action.type) {
     case CHANGE_USER: {
       return { ...state, user: action.user };
