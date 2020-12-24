@@ -11,7 +11,6 @@ const getPostsAction = (posts: Post[]) => {
 
 export const getPost = (dispatch: Dispatch) => {
   axios.get('https://jsonplaceholder.typicode.com/posts').then(({ data }) => {
-    // handle success
     dispatch(getPostsAction(data));
   });
 };

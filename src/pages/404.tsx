@@ -7,8 +7,9 @@ export const FourOuFour: FC = () => {
   return (
     <div>
       <h3>
-        No match for <code>{location.pathname} Error 404!</code>
+        No match for <code>{location.pathname}</code>
       </h3>
+      <h2>Error 404!</h2>
     </div>
   );
 };

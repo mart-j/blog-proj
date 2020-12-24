@@ -4,9 +4,7 @@ export type InitialStore = {
   posts: Post[];
 };
 
-export interface PostsRootState extends InitialStore {}
-
-export interface AllActions extends PostsRootState {
+export interface AllActions extends InitialStore {
   type: typeof GET_POSTS;
 }
 

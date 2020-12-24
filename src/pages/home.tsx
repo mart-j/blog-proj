@@ -1,27 +1,31 @@
-import React, { FC, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getPost } from '../store/postsStore/actions';
+import React, { FC, Fragment } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 
 export const Home: FC = () => {
-  const dispatch = useDispatch();
+  const history = useHistory();
 
   const articles = useSelector((state: RootState) => {
     return state.postsStore.posts;
   });
-  useEffect(() => {
-    getPost(dispatch);
-  }, []);
+
+  const readMoreButtonHandler = (id: number) => {
+    history.push(`/articles/${id}`);
+  };
   return (
     <div>
       {articles.length > 0 && (
         <div>
-          {articles.map(({ body }, i) => {
+          {articles.map(({ body, title, id }, i) => {
             return (
-              <>
-                <div key={`${i}`}>{body}</div>
-                <br></br>
-              </>
+              <Fragment key={`${i}`}>
+                <h3>{title}</h3>
+                <div>{body}</div>
+                <button onClick={() => readMoreButtonHandler(id)}>
+                  ReadMore
+                </button>
+              </Fragment>
             );
           })}
         </div>
