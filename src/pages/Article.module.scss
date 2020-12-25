@@ -14,8 +14,20 @@
   text-align: center;
 }
 .articlesErapper {
-    text-align: center;
+  text-align: center;
 }
 .suggArticlesWrapper {
-    text-align: center;
+  text-align: center;
+}
+.formWrapper {
+  text-align: center;
+}
+.form {
+  display: inline-flex;
+  flex-direction: column;
+}
+.email {
+  min-width: 200px;
+  display: inline-flex;
+  margin-bottom: 5px;
 }
