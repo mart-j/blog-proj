@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { isConstructorDeclaration } from 'typescript';
 import { RootState } from '../store';
 import {
   getComment,
@@ -14,6 +13,7 @@ import styles from './Article.module.scss';
 export const Articles: FC = () => {
   const [commentInput, setCommentInput] = useState<Comment>();
   const [isEditActive, setIsEditActive] = useState(false);
+  const [editTitleInput, setEditTitleInput] = useState<string>();
 
   const dispatch = useDispatch();
 
@@ -68,10 +68,13 @@ export const Articles: FC = () => {
   };
 
   const editTitleHandler = () => {
+    setEditTitleInput(post!.title);
     const newPosts = [...articles];
     const editIndex = newPosts.indexOf(post!);
-    newPosts[editIndex].title = 'nomainiju titli!';
+    newPosts[editIndex].title = editTitleInput!;
     dispatch(updatePostAction(newPosts));
+
+    
   };
 
   const editArticleHandler = () => {
@@ -88,13 +91,18 @@ export const Articles: FC = () => {
           {!isEditActive ? (
             <h4 className={styles.articles_title}>Title: {post?.title}</h4>
           ) : (
-            <textarea onChange={(e) => {}} />
+            <textarea
+              onChange={(e) => {
+                setEditTitleInput(e.target.value);
+              }}
+              value={editTitleInput}
+            />
           )}
 
           {user === 'admin@admin.com' && (
             <button
               onClick={() => {
-                // editTitleHandler();
+                editTitleHandler();
                 setIsEditActive(!isEditActive);
               }}
             >
