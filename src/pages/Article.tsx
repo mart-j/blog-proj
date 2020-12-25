@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { RootState } from '../store';
 import { getComment } from '../store/commentsStore/actions';
+import styles from './Article.module.scss';
 
 export const Articles: FC = () => {
   const dispatch = useDispatch();
@@ -41,14 +42,24 @@ export const Articles: FC = () => {
   }, []);
   return (
     <>
-      <h3>{post?.title}</h3>
-      <p>{post?.body}</p>
-      <button onClick={backButtonHandler}>BackToHome</button>
+      <div className={styles.articlesErapper}>
+        <h4 className={styles.articles_title}>Title: {post?.title}</h4>
+        <p className={styles.articles_title}>{post?.body}</p>
+        <button
+          onClick={backButtonHandler}
+          className={styles.articles_back_button}
+        >
+          BackToHome
+        </button>
+      </div>
       {suggestedArticles.map((item, i) => {
         return (
-          <div key={`${i}`}>
-            <div>{item.title}</div>
-            <button onClick={() => readMoreButtonHandler(item.id)}>
+          <div className={styles.suggArticlesWrapper} key={`${i}`}>
+            <div className={styles.articles_title}>Title: {item.title}</div>
+            <button
+              onClick={() => readMoreButtonHandler(item.id)}
+              className={styles.suggested_button}
+            >
               Read More
             </button>
           </div>
@@ -58,7 +69,7 @@ export const Articles: FC = () => {
       <div>
         {filteredComments.map((comment, i) => {
           return (
-            <div key={`${i}`}>
+            <div key={`${i}`} className={styles.comments}>
               <div>{comment.email}</div>
               <br />
               <div>{comment.body}</div>

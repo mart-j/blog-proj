@@ -16,7 +16,7 @@ export const Users: FC = () => {
 
   return (
     <>
-      <h3>{currentUser}</h3>
+      <h4>{currentUser}</h4>
       <h5>
         {currentUser !== 'guest' && (
           <button onClick={singOutHandler}>Sign out</button>

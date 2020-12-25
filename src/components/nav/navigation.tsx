@@ -5,10 +5,10 @@ import styles from './Navigation.module.scss';
 export const Navigation: FC = () => {
   return (
     <nav>
-      <NavLink exact activeClassName={styles.active} to="/">
+      <NavLink className={styles.navItem} exact activeClassName={styles.active} to="/">
         Home
       </NavLink>
-      <NavLink activeClassName={styles.active} to="/login">
+      <NavLink className={styles.navItem} activeClassName={styles.active} to="/login">
         Login
       </NavLink>
     </nav>

@@ -2,6 +2,7 @@ import React, { FC, Fragment } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
+import styles from './Home.module.scss';
 
 export const Home: FC = () => {
   const history = useHistory();
@@ -14,23 +15,24 @@ export const Home: FC = () => {
     history.push(`/articles/${id}`);
   };
   return (
-    <div>
+    <>
       {articles.length > 0 && (
-        <div>
+        <div className={styles.home}>
           {articles.map(({ body, title, id }, i) => {
             return (
               <Fragment key={`${i}`}>
-                <h3>{title}</h3>
-                <div>{body}</div>
+                <h3>Title: {title}</h3>
+                <p>{body}</p>
                 <button onClick={() => readMoreButtonHandler(id)}>
                   ReadMore
                 </button>
+                <hr />
               </Fragment>
             );
           })}
         </div>
       )}
       {/* <button onClick={() => getPost(dispatch)}>Button</button> */}
-    </div>
+    </>
   );
 };

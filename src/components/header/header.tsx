@@ -1,26 +1,25 @@
 import React, { FC } from 'react';
-import { Navigation } from '../nav/navigation';
-import { Logo } from '../logo/logo';
-import { Users } from '../users/users';
-import { Search } from '../search/search';
+import { Navigation } from '../nav/Navigation';
+import { Logo } from '../logo/Logo';
+import { Users } from '../users/Users';
+import { Search } from '../search/Search';
+import styles from './Header.module.scss';
 
 export const Header: FC = () => {
   return (
     <header>
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-2">
-            <Logo />
-          </div>
-          <div className="col-xs-5">
-            <Navigation />
-          </div>
-          <div className="col-xs-2">
-            <Users />
-          </div>
-          <div className="col-xs-2">
-            <Search />
-          </div>
+      <div className={styles.nav}>
+        <div>
+          <Logo />
+        </div>
+        <div>
+          <Navigation />
+        </div>
+        <div>
+          <Users />
+        </div>
+        <div>
+          <Search />
         </div>
       </div>
     </header>
