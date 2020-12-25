@@ -28,9 +28,8 @@ export const Articles: FC = () => {
   });
 
   const test = () => {
-    const newComments = [...comments, commentInput];
+    const newComments = [...comments, commentInput!];
     dispatch(updateCommentsAction(newComments));
-    console.log(newComments);
   };
 
   const history = useHistory();
@@ -83,7 +82,7 @@ export const Articles: FC = () => {
       })}
       <hr />
       <button onClick={test}>test</button>
-      {user !== 'guest' && (
+      {user === 'guest' && (
         <div className={styles.formWrapper}>
           <form className={styles.form}>
             <div>
