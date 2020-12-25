@@ -12,8 +12,9 @@ import styles from './Article.module.scss';
 
 export const Articles: FC = () => {
   const [commentInput, setCommentInput] = useState<Comment>();
-  const [isEditActive, setIsEditActive] = useState(false);
+  const [isTitleEditActive, setIsTitleEditActive] = useState(false);
   const [editTitleInput, setEditTitleInput] = useState<string>();
+  const [isArticleEditActive, setIsArticleEditActive] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -73,8 +74,6 @@ export const Articles: FC = () => {
     const editIndex = newPosts.indexOf(post!);
     newPosts[editIndex].title = editTitleInput!;
     dispatch(updatePostAction(newPosts));
-
-    
   };
 
   const editArticleHandler = () => {
@@ -88,7 +87,7 @@ export const Articles: FC = () => {
     <>
       <div className={styles.articlesErapper}>
         <div>
-          {!isEditActive ? (
+          {!isTitleEditActive ? (
             <h4 className={styles.articles_title}>Title: {post?.title}</h4>
           ) : (
             <textarea
@@ -103,17 +102,28 @@ export const Articles: FC = () => {
             <button
               onClick={() => {
                 editTitleHandler();
-                setIsEditActive(!isEditActive);
+                setIsTitleEditActive(!isTitleEditActive);
               }}
             >
-              {isEditActive ? 'Save' : 'Edit'}
+              {isTitleEditActive ? 'Save' : 'Edit'}
             </button>
           )}
         </div>
         <div>
-          <p className={styles.articles_title}>{post?.body}</p>
+          {!isArticleEditActive ? (
+            <p className={styles.articles_title}>{post?.body}</p>
+          ) : (
+            <textarea onChange={(e) => {}} value={''} />
+          )}
           {user === 'admin@admin.com' && (
-            <button onClick={editArticleHandler}>EditArticle</button>
+            <button
+              onClick={() => {
+                editArticleHandler(); // ATSAAKAM SHEIT!!!!!!!!!!!!!!!!!
+                setIsArticleEditActive(!isArticleEditActive);
+              }}
+            >
+              {isArticleEditActive ? 'Save' : 'Edit'}
+            </button>
           )}
         </div>
         <button
