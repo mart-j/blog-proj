@@ -1,16 +1,19 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import { isConstructorDeclaration } from 'typescript';
 import { RootState } from '../store';
 import {
   getComment,
   updateCommentsAction,
 } from '../store/commentsStore/actions';
 import { Comment } from '../store/commentsStore/types';
+import { updatePostAction } from '../store/postsStore/actions';
 import styles from './Article.module.scss';
 
 export const Articles: FC = () => {
   const [commentInput, setCommentInput] = useState<Comment>();
+  const [isEditActive, setIsEditActive] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -27,7 +30,7 @@ export const Articles: FC = () => {
     return state.userStore.user.email;
   });
 
-  const test = () => {
+  const submitFormHandler = () => {
     const newComments = [...comments, commentInput!];
     dispatch(updateCommentsAction(newComments));
   };
@@ -52,14 +55,59 @@ export const Articles: FC = () => {
     return comment.postId === Number(id);
   });
 
+  const textArea = useRef<HTMLTextAreaElement>(null);
+
+  const removeCommentHandler = (uId: number) => {
+    const newComments = [...comments];
+    const currComm = newComments.find((comment) => {
+      return comment.id === uId;
+    });
+    const removeIndex = comments.indexOf(currComm!);
+    newComments.splice(removeIndex, 1);
+    dispatch(updateCommentsAction(newComments));
+  };
+
+  const editTitleHandler = () => {
+    const newPosts = [...articles];
+    const editIndex = newPosts.indexOf(post!);
+    newPosts[editIndex].title = 'nomainiju titli!';
+    dispatch(updatePostAction(newPosts));
+  };
+
+  const editArticleHandler = () => {
+    console.log('BUM-BUM');
+  };
+
   useEffect(() => {
-    getComment(dispatch);
+    getComment(dispatch, comments);
   }, []);
   return (
     <>
       <div className={styles.articlesErapper}>
-        <h4 className={styles.articles_title}>Title: {post?.title}</h4>
-        <p className={styles.articles_title}>{post?.body}</p>
+        <div>
+          {!isEditActive ? (
+            <h4 className={styles.articles_title}>Title: {post?.title}</h4>
+          ) : (
+            <textarea onChange={(e) => {}} />
+          )}
+
+          {user === 'admin@admin.com' && (
+            <button
+              onClick={() => {
+                // editTitleHandler();
+                setIsEditActive(!isEditActive);
+              }}
+            >
+              {isEditActive ? 'Save' : 'Edit'}
+            </button>
+          )}
+        </div>
+        <div>
+          <p className={styles.articles_title}>{post?.body}</p>
+          {user === 'admin@admin.com' && (
+            <button onClick={editArticleHandler}>EditArticle</button>
+          )}
+        </div>
         <button
           onClick={backButtonHandler}
           className={styles.articles_back_button}
@@ -81,25 +129,19 @@ export const Articles: FC = () => {
         );
       })}
       <hr />
-      <button onClick={test}>test</button>
-      {user === 'guest' && (
+      {user !== 'guest' && (
         <div className={styles.formWrapper}>
-          <form className={styles.form}>
-            <div>
-              <input
-                type="email"
-                className={styles.email}
-                placeholder="e-mail@mail.com"
-                onChange={(e) => {
-                  setCommentInput({
-                    ...commentInput!,
-                    email: e.target.value,
-                    postId: Number(id),
-                  });
-                }}
-              />
-            </div>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              submitFormHandler();
+              setCommentInput({ ...commentInput!, body: '' });
+              textArea.current!.value = '';
+            }}
+            className={styles.form}
+          >
             <textarea
+              ref={textArea}
               placeholder="Your comment goes here..."
               name="commentArea"
               id="commentArea"
@@ -110,9 +152,12 @@ export const Articles: FC = () => {
                 setCommentInput({
                   ...commentInput!,
                   body: e.target.value,
+                  email: user,
+                  postId: Number(id),
                 });
               }}
             ></textarea>
+            <button type="submit">Submit</button>
           </form>
         </div>
       )}
@@ -123,6 +168,15 @@ export const Articles: FC = () => {
               <div>{comment.email}</div>
               <br />
               <div>{comment.body}</div>
+              {user === 'admin@admin.com' && (
+                <button
+                  onClick={() => {
+                    removeCommentHandler(comment.id!);
+                  }}
+                >
+                  DELETE
+                </button>
+              )}
               <br />
               <br />
             </div>

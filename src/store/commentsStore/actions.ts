@@ -16,10 +16,13 @@ export const updateCommentsAction = (comments: Comment[]) => {
   };
 };
 
-export const getComment = (dispatch: Dispatch) => {
-  axios
-    .get('https://jsonplaceholder.typicode.com/comments')
-    .then(({ data }) => {
-      dispatch(getCommentsAction(data));
-    });
+export const getComment = (dispatch: Dispatch, comments: Comment[]) => {
+  if (!comments.length) {
+    axios
+      .get('https://jsonplaceholder.typicode.com/comments')
+      .then(({ data }) => {
+        console.log('iesuucu datus!');
+        dispatch(getCommentsAction(data));
+      });
+  }
 };
