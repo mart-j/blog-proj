@@ -1,5 +1,14 @@
+$navColor: #72bda3;
+$navactiveColor: #94e8b4;
+
+.navItem {
+  color: $navColor;
+  text-decoration: none;
+  font-size: 22px;
+}
 .active {
-  color: yellow;
+  color: $navactiveColor;
+  font-weight: 600;
 }
 .navItem:first-child {
   margin-right: 10px;

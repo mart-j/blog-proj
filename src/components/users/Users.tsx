@@ -16,7 +16,11 @@ export const Users: FC = () => {
 
   return (
     <>
-      <h4>{currentUser}</h4>
+      <h4>
+        {currentUser.indexOf('@') !== -1
+          ? currentUser.substring(0, currentUser.indexOf('@'))
+          : currentUser}
+      </h4>
       <h5>
         {currentUser !== 'guest' && (
           <button onClick={singOutHandler}>Sign out</button>

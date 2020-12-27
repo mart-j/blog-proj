@@ -1,0 +1,30 @@
+$logoColor: #94e8b4;
+
+.logoWrapper {
+  margin-bottom: 22px;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  cursor: pointer;
+}
+.logoSquare {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 1px solid $logoColor;
+}
+.logoSquare:last-child {
+  left: 7px;
+  top: 7px;
+}
+.logoText {
+  color: $logoColor;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.logoSquare:first-child {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 30px;
+}
