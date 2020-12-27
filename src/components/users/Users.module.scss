@@ -1,0 +1,43 @@
+.userIcon {
+  width: 40px;
+}
+
+.userWrapper {
+  top: -20px;
+  position: relative;
+}
+
+.button {
+  color: rgb(160, 236, 255);
+  padding-bottom: 3px;
+  cursor: pointer;
+  width: 67px;
+  position: absolute;
+  top: 45px;
+  font-size: 14px;
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #0af4ff;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.currentUserWrapper {
+  position: relative;
+}
+.currentUser {
+  opacity: 0;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.336);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(40px, -50%);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.247);
+  transition: all .5s ease;
+}
+.currentUserWrapper:hover .currentUser {
+  opacity: 1;
+}

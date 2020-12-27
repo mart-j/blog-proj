@@ -1,4 +1,4 @@
-$logoColor: #94e8b4;
+$logoColor: #fff;
 
 .logoWrapper {
   margin-bottom: 22px;
@@ -14,13 +14,14 @@ $logoColor: #94e8b4;
   border: 1px solid $logoColor;
 }
 .logoSquare:last-child {
-  left: 7px;
-  top: 7px;
+  right: -7px;
+  top: -7px;
 }
 .logoText {
   color: $logoColor;
   font-size: 14px;
   font-weight: 600;
+  margin-right: 3px;
 }
 
 .logoSquare:first-child {
