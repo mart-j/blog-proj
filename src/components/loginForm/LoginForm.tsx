@@ -1,12 +1,13 @@
-import React, { FC, useState } from 'react';
-import _ from 'lodash';
+import React, { useState } from 'react';
+import _, { stubFalse } from 'lodash';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { changeUserAction } from '../../store/userStore/actions';
-import styles from './Login.module.scss';
+import styles from './LoginForm.module.scss';
+import { Button } from '../button/Button';
 
-export const Login: FC = () => {
+export const LoginForm = () => {
   const [input, setInput] = useState({ email: '', password: '' });
 
   const dispatch = useDispatch();
@@ -28,18 +29,22 @@ export const Login: FC = () => {
   };
 
   return (
-    <>
+    <div className={styles.formWrapper}>
       {user.email === 'guest' ? (
         <form
-          className={styles.login}
+          className={styles.loginForm}
           onSubmit={(e) => {
             e.preventDefault();
             dispatchHandler();
             setInput({ email: '', password: '' });
           }}
         >
-          <label htmlFor="fname">e-mail: </label>
+          <span className={styles.heading}>Please sign in</span>
+          <label className={styles.label} htmlFor="fname">
+            email:{' '}
+          </label>
           <input
+            className={styles.input}
             onChange={(e) => {
               setInput({ ...input!, email: e.target.value });
             }}
@@ -49,8 +54,11 @@ export const Login: FC = () => {
           />
           <br />
           <br />
-          <label htmlFor="lname">Password: </label>
+          <label className={styles.label} htmlFor="lname">
+            password:{' '}
+          </label>
           <input
+            className={styles.input}
             onChange={(e) => {
               setInput({ ...input!, password: e.target.value });
             }}
@@ -60,11 +68,11 @@ export const Login: FC = () => {
           />
           <br />
           <br />
-          <input type="submit" />
+          <Button label="Submit" />
         </form>
       ) : (
         'You are already signed in!'
       )}
-    </>
+    </div>
   );
 };

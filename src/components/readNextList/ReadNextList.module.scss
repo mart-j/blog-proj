@@ -1,0 +1,28 @@
+.articlesWrapper {
+  max-width: 1000px;
+  display: flex;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.articleWrapper {
+  margin: 0 5px;
+  width: 33.333%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 18px;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.paragraph::first-letter {
+  text-transform: uppercase;
+}

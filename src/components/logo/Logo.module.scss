@@ -1,27 +1,28 @@
 $logoColor: #fff;
 
 .container {
+  align-items: center;
   width: 33.333%;
   display: flex;
   justify-content: center;
 }
 .logoWrapper {
-  width: 100px;
+  width: 80px;
   text-align: center;
   margin-bottom: 22px;
-  height: 100px;
+  height: 80px;
   position: relative;
   cursor: pointer;
 }
 .logoSquare {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border: 1px solid $logoColor;
 }
 .logoSquare:last-child {
   right: -7px;
-  top: -7px;
+  top: 7px;
 }
 .logoText {
   color: $logoColor;

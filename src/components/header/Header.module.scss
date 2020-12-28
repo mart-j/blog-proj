@@ -4,7 +4,10 @@ $primaryColor: #27707c;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  max-width: 1400px;
+  margin: auto;
   background-color: $primaryColor;
   margin-bottom: 10px;
   padding-top: 15px;
+  padding-bottom: 15px;
 }

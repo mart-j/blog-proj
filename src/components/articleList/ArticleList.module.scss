@@ -21,12 +21,14 @@
 }
 
 .searchWrapper {
-  margin-right: 10px;
+  max-width: 1400px;
+  margin: auto;
   margin-bottom: 40px;
   display: flex;
   position: relative;
   justify-content: flex-end;
 }
+
 .searchIconWrapper {
   border-radius: 0px 4px 4px 0;
   width: 40px;
@@ -37,6 +39,7 @@
   transform: translate(0, -50%);
   right: 0;
 }
+
 .searchIcon {
   position: absolute;
   height: 20pxs;
@@ -54,6 +57,7 @@
   margin: auto;
   max-width: 1000px;
 }
+
 .buttonWrapper {
   display: flex;
   width: 100%;

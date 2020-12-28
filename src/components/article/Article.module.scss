@@ -1,0 +1,23 @@
+.articleTitle {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.articleTitle::first-letter {
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: 20px;
+}
+
+.paragraph::first-letter {
+  text-transform: uppercase;
+}
+
+.articleWrapper {
+  max-width: 1000px;
+  margin: auto;
+  margin-bottom: 50px;
+}
+

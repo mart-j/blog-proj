@@ -3,9 +3,10 @@
 }
 
 .userWrapper {
+  display: flex;
   width: 33.333%;
-  text-align: center;
-  top: -20px;
+  justify-content: center;
+  align-items: center;
   position: relative;
 }
 

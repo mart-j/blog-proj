@@ -1,9 +1,10 @@
-import React, { Fragment, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import styles from './ArticleList.module.scss';
 import searchIcon from '../../assets/search.svg';
+import { Button } from '../button/Button';
 
 export const ArticleList = () => {
   const [searchValue, setSearchValue] = useState<string>();
@@ -24,6 +25,11 @@ export const ArticleList = () => {
   const readMoreButtonHandler = (id: number) => {
     history.push(`/articles/${id}`);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className={styles.articleListWrapper}>
       <h1 className={styles.heading}>Latest stories</h1>
@@ -52,12 +58,10 @@ export const ArticleList = () => {
                 <h3 className={styles.title}>{title}</h3>
                 <p className={styles.article}>{body}</p>
                 <div className={styles.buttonWrapper}>
-                  <button
-                    className={styles.button}
-                    onClick={() => readMoreButtonHandler(id)}
-                  >
-                    ReadMore
-                  </button>
+                  <Button
+                    label="Read more"
+                    clickHandler={() => readMoreButtonHandler(id)}
+                  />
                 </div>
                 <hr />
               </div>
