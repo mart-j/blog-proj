@@ -15,6 +15,7 @@ export const Articles: FC = () => {
   const [isTitleEditActive, setIsTitleEditActive] = useState(false);
   const [editTitleInput, setEditTitleInput] = useState<string>();
   const [isArticleEditActive, setIsArticleEditActive] = useState(false);
+  const [editArticleInput, setEditArticleInput] = useState<string>();
 
   const dispatch = useDispatch();
 
@@ -77,7 +78,11 @@ export const Articles: FC = () => {
   };
 
   const editArticleHandler = () => {
-    console.log('BUM-BUM');
+    setEditArticleInput(post!.body);
+    const newPosts = [...articles];
+    const editIndex = newPosts.indexOf(post!);
+    newPosts[editIndex].body = editArticleInput!;
+    dispatch(updatePostAction(newPosts));
   };
 
   useEffect(() => {
@@ -85,7 +90,7 @@ export const Articles: FC = () => {
   }, []);
   return (
     <>
-      <div className={styles.articlesErapper}>
+      <div className={styles.articlesWrapper}>
         <div>
           {!isTitleEditActive ? (
             <h4 className={styles.articles_title}>Title: {post?.title}</h4>
@@ -113,7 +118,12 @@ export const Articles: FC = () => {
           {!isArticleEditActive ? (
             <p className={styles.articles_title}>{post?.body}</p>
           ) : (
-            <textarea onChange={(e) => {}} value={''} />
+            <textarea
+              onChange={(e) => {
+                setEditArticleInput(e.target.value);
+              }}
+              value={editArticleInput}
+            />
           )}
           {user === 'admin@admin.com' && (
             <button

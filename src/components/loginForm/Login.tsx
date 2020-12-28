@@ -2,8 +2,8 @@ import React, { FC, useState } from 'react';
 import _ from 'lodash';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store';
-import { changeUserAction } from '../store/userStore/actions';
+import { RootState } from '../../store';
+import { changeUserAction } from '../../store/userStore/actions';
 import styles from './Login.module.scss';
 
 export const Login: FC = () => {

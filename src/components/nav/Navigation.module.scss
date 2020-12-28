@@ -1,6 +1,10 @@
 $navColor: #fff;
 $navactiveColor: #0af4ff;
 
+.navigation {
+  flex-grow: 1;
+  text-align: center;
+}
 .navItem {
   color: $navColor;
   text-decoration: none;

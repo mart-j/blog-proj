@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Home } from './pages/Home';
 import { Articles } from './pages/Article';
-import { Login } from './pages/Login';
+import { Login } from './components/loginForm/Login';
 import { FourOuFour } from './pages/_404';
 import { Header } from './components/header/Header';
 import { getPost } from './store/postsStore/actions';

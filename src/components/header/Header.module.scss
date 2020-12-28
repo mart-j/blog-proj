@@ -1,11 +1,9 @@
 $primaryColor: #27707c;
 
-.nav {
+.header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
-.header {
   background-color: $primaryColor;
   margin-bottom: 10px;
   padding-top: 15px;

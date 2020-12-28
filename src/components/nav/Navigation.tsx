@@ -4,7 +4,7 @@ import styles from './Navigation.module.scss';
 
 export const Navigation: FC = () => {
   return (
-    <nav>
+    <nav className={styles.navigation}>
       <NavLink className={styles.navItem} exact activeClassName={styles.active} to="/">
         Home
       </NavLink>
