@@ -1,6 +1,7 @@
 .articleTitle {
   font-size: 26px;
   font-weight: 600;
+  margin: 10px 0;
 }
 
 .articleTitle::first-letter {
@@ -21,3 +22,21 @@
   margin-bottom: 50px;
 }
 
+.editButtonWrapper {
+}
+
+.backButtonWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.textArea, .paragraphTextArea {
+  margin-top: 40px;
+  font-size: 20px;
+  width: 100%;
+  height: 100px;
+}
+
+.paragraphTextArea {
+  font-size: 16px;
+}

@@ -2,14 +2,9 @@ import React, { FC, useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { RootState } from '../../store';
-import {
-  getComment,
-  updateCommentsAction,
-} from '../../store/commentsStore/actions';
-
+import { getComment } from '../../store/commentsStore/actions';
 import { updatePostAction } from '../../store/postsStore/actions';
 import { Button } from '../button/Button';
-import { ReadNextList } from '../readNextList/ReadNextList';
 import styles from './Article.module.scss';
 
 export const Article: FC = () => {
@@ -41,16 +36,13 @@ export const Article: FC = () => {
     history.push('/');
   };
 
-  const filteredComments = comments.filter((comment) => {
-    return comment.postId === Number(id);
-  });
-
-   const editTitleHandler = () => {
+  const editTitleHandler = () => {
     setEditTitleInput(post!.title);
     const newPosts = [...articles];
     const editIndex = newPosts.indexOf(post!);
     newPosts[editIndex].title = editTitleInput!;
     dispatch(updatePostAction(newPosts));
+    setIsTitleEditActive(!isTitleEditActive);
   };
 
   const editArticleHandler = () => {
@@ -59,6 +51,7 @@ export const Article: FC = () => {
     const editIndex = newPosts.indexOf(post!);
     newPosts[editIndex].body = editArticleInput!;
     dispatch(updatePostAction(newPosts));
+    setIsArticleEditActive(!isArticleEditActive);
   };
 
   useEffect(() => {
@@ -74,6 +67,7 @@ export const Article: FC = () => {
             <h4 className={styles.articleTitle}>{post?.title}</h4>
           ) : (
             <textarea
+              className={styles.textArea}
               onChange={(e) => {
                 setEditTitleInput(e.target.value);
               }}
@@ -82,14 +76,13 @@ export const Article: FC = () => {
           )}
 
           {user === 'admin@admin.com' && (
-            <button
-              onClick={() => {
-                editTitleHandler();
-                setIsTitleEditActive(!isTitleEditActive);
-              }}
-            >
-              {isTitleEditActive ? 'Save' : 'Edit'}
-            </button>
+            <div className={styles.editButtonWrapper}>
+              <Button
+                redBorder="red"
+                label={isTitleEditActive ? 'Save' : 'Edit'}
+                clickHandler={editTitleHandler}
+              />
+            </div>
           )}
         </div>
         <div>
@@ -97,6 +90,7 @@ export const Article: FC = () => {
             <p className={styles.paragraph}>{post?.body}</p>
           ) : (
             <textarea
+              className={styles.paragraphTextArea}
               onChange={(e) => {
                 setEditArticleInput(e.target.value);
               }}
@@ -104,17 +98,18 @@ export const Article: FC = () => {
             />
           )}
           {user === 'admin@admin.com' && (
-            <button
-              onClick={() => {
-                editArticleHandler();
-                setIsArticleEditActive(!isArticleEditActive);
-              }}
-            >
-              {isArticleEditActive ? 'Save' : 'Edit'}
-            </button>
+            <div className={styles.editButtonWrapper}>
+              <Button
+                redBorder="red"
+                label={isArticleEditActive ? 'Save' : 'Edit'}
+                clickHandler={editArticleHandler}
+              />
+            </div>
           )}
         </div>
-        <Button label="Back to home" clickHandler={backButtonHandler} />
+        <div className={styles.backButtonWrapper}>
+          <Button label="Back to home" clickHandler={backButtonHandler} />
+        </div>
       </div>
     </>
   );
