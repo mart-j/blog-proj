@@ -1,7 +1,12 @@
 $logoColor: #fff;
 
+.container {
+  width: 33.333%;
+  display: flex;
+  justify-content: center;
+}
 .logoWrapper {
-  flex-grow: 1;
+  width: 100px;
   text-align: center;
   margin-bottom: 22px;
   height: 100px;
