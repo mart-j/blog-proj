@@ -71,7 +71,6 @@ export const ArticleList = () => {
           })}
         </div>
       )}
-      {/* <button onClick={() => getPost(dispatch)}>Button</button> */}
     </div>
   );
 };

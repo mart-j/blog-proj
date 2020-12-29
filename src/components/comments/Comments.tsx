@@ -38,7 +38,7 @@ export const Comments = () => {
     dispatch(updateCommentsAction(newComments));
   };
 
-  const submitFormHandler = () => {
+  const submitCommentHandler = () => {
     const newComments = [...comments, commentInput!];
     dispatch(updateCommentsAction(newComments));
   };
@@ -65,7 +65,7 @@ export const Comments = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              submitFormHandler();
+              submitCommentHandler();
               setCommentInput({ ...commentInput!, body: '' });
               textArea.current!.value = '';
             }}
@@ -81,7 +81,6 @@ export const Comments = () => {
               className={styles.commentArea}
               onChange={(e) => {
                 setCommentInput({
-                  ...commentInput!,
                   body: e.target.value,
                   email: user,
                   postId: Number(id),

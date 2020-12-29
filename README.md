@@ -1,18 +1,19 @@
-# blog-proj
+# Uztaisījām stori(index.ts) un ievrapojām mūsu apsi provaiderī, index.tsx failā.
 
-##guideline:
+# index.ts failā importējam visas mūsu stores un kombinējam vienā, kopējajā un exportējam.
 
-### Branch name example
-    feature/<feature-name>
+# uerStore = userReducer?
 
+# Uztaisam reducer.ts failā sākotnējo stori (initialUserStore), kas ir mūsu defaultais steits būtībā.
 
-### Commit message example
-    <feature-name> your message
+# definējam reducer funkciju, kas menedžē mūsu actions.
 
+# Definējam action funkciju, kas ļauj mums mainīt mūsu current stori mūsu izveletajā veidā.
 
+# Sakotnēji ar ts-igonre pārbaudam vai viss darbojās, tad - definējam tipus.
 
-### Branch name
-    feature/31-create-navigation
+# Izstrādes laikā, ja ir nepieciešams, veidojam jaunas stores pēc iepriekšējā parauga un liekam tās combineReducer funkcijā.
 
-### Commit message
-    31-create-navigation added navigation
+# Lai izmanītu roostori mums ir jādispačo mūsu actions. Dispatch ir redux hooks.
+
+# lai izmantot datus no rootSteita pielietojam reduksa hooku useSelector.

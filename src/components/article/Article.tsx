@@ -36,6 +36,11 @@ export const Article: FC = () => {
     history.push('/');
   };
 
+  useEffect(() => {
+    const dropTo404 = articles.some((article) => article.id === Number(id));
+    !dropTo404 && history.push('../404');
+  }, []);
+
   const editTitleHandler = () => {
     setEditTitleInput(post!.title);
     const newPosts = [...articles];

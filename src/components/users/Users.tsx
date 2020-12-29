@@ -29,7 +29,11 @@ export const Users: FC = () => {
       </div>
       {currentUser !== 'guest' && (
         <>
-          <Button textColor='white'  label="Sign out" clickHandler={singOutHandler} />
+          <Button
+            textColor="white"
+            label="Sign out"
+            clickHandler={singOutHandler}
+          />
         </>
       )}
     </div>

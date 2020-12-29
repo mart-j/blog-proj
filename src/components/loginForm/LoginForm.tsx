@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import _, { stubFalse } from 'lodash';
+import _ from 'lodash';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
@@ -8,7 +8,10 @@ import styles from './LoginForm.module.scss';
 import { Button } from '../button/Button';
 
 export const LoginForm = () => {
-  const [input, setInput] = useState({ email: '', password: '' });
+  const [loginDetailsInput, setLoginDetailsInput] = useState({
+    email: '',
+    password: '',
+  });
 
   const dispatch = useDispatch();
 
@@ -22,8 +25,8 @@ export const LoginForm = () => {
   const history = useHistory();
 
   const dispatchHandler = () => {
-    if (_.some(userDb, input)) {
-      dispatch(changeUserAction(input!));
+    if (_.some(userDb, loginDetailsInput)) {
+      dispatch(changeUserAction(loginDetailsInput));
       history.push('/');
     }
   };
@@ -36,34 +39,36 @@ export const LoginForm = () => {
           onSubmit={(e) => {
             e.preventDefault();
             dispatchHandler();
-            setInput({ email: '', password: '' });
+            setLoginDetailsInput({ email: '', password: '' });
           }}
         >
           <span className={styles.heading}>Please sign in</span>
-          <label className={styles.label} htmlFor="fname">
-            email:{' '}
-          </label>
+          <label className={styles.label}>email:</label>
           <input
             className={styles.input}
             onChange={(e) => {
-              setInput({ ...input!, email: e.target.value });
+              setLoginDetailsInput({
+                ...loginDetailsInput,
+                email: e.target.value,
+              });
             }}
             type="email"
-            value={input.email}
+            value={loginDetailsInput.email}
             required
           />
           <br />
           <br />
-          <label className={styles.label} htmlFor="lname">
-            password:{' '}
-          </label>
+          <label className={styles.label}>password:</label>
           <input
             className={styles.input}
             onChange={(e) => {
-              setInput({ ...input!, password: e.target.value });
+              setLoginDetailsInput({
+                ...loginDetailsInput,
+                password: e.target.value,
+              });
             }}
             type="password"
-            value={input.password}
+            value={loginDetailsInput.password}
             required
           />
           <br />

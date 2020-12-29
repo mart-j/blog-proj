@@ -1,3 +1,11 @@
+.heading {
+    margin-top: 0;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 24px;
+
+}
 .articlesWrapper {
   max-width: 1000px;
   display: flex;
@@ -15,7 +23,6 @@
 }
 
 .title {
-  white-space: nowrap;
   font-weight: 600;
   font-size: 18px;
   &::first-letter {
