@@ -5,6 +5,7 @@ import { RootState } from '../../store';
 import { changeUserAction } from '../../store/userStore/actions';
 import styles from './Users.module.scss';
 import userIcon from '../../assets/user.svg';
+import { Button } from '../button/Button';
 
 export const Users: FC = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export const Users: FC = () => {
   };
 
   return (
-    <div className={styles.userWrapper}>
+    <div className={styles.mainWrapper}>
       <div className={styles.currentUserWrapper}>
         <img className={styles.userIcon} src={userIcon} alt="user icon" />
         <div className={styles.currentUser}>
@@ -25,13 +26,12 @@ export const Users: FC = () => {
             ? currentUser.substring(0, currentUser.indexOf('@'))
             : currentUser}
         </div>
-        {currentUser !== 'guest' && (
-          <button className={styles.button} onClick={singOutHandler}>
-            Sign out
-          </button>
-        )}
       </div>
-        
+      {currentUser !== 'guest' && (
+        <>
+          <Button textColor='white'  label="Sign out" clickHandler={singOutHandler} />
+        </>
+      )}
     </div>
   );
 };

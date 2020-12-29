@@ -17,7 +17,9 @@ export const ArticleList = () => {
 
   const filterdArticles = articles.filter((article) => {
     if (searchValue) {
-      return article.title.includes(searchValue!);
+      return article.title
+        .toLowerCase()
+        .includes(searchValue!.toLowerCase());
     }
     return article;
   });

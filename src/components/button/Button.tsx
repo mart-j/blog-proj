@@ -4,13 +4,14 @@ import styles from './Button.module.scss';
 interface Props {
   label: string;
   clickHandler?: () => void;
-  redBorder?: string;
+  stripeColor?: string;
+  textColor?: string;
 }
 
-export const Button: FC<Props> = ({ clickHandler, label, redBorder }) => {
+export const Button: FC<Props> = ({ textColor, clickHandler, label, stripeColor }) => {
   return (
     <button
-      style={{ borderColor: redBorder }}
+      style={{ borderColor: stripeColor, color: textColor }}
       type="submit"
       onClick={clickHandler}
       className={styles.button}

@@ -78,7 +78,7 @@ export const Article: FC = () => {
           {user === 'admin@admin.com' && (
             <div className={styles.editButtonWrapper}>
               <Button
-                redBorder="red"
+                stripeColor="red"
                 label={isTitleEditActive ? 'Save' : 'Edit'}
                 clickHandler={editTitleHandler}
               />
@@ -100,7 +100,7 @@ export const Article: FC = () => {
           {user === 'admin@admin.com' && (
             <div className={styles.editButtonWrapper}>
               <Button
-                redBorder="red"
+                stripeColor="red"
                 label={isArticleEditActive ? 'Save' : 'Edit'}
                 clickHandler={editArticleHandler}
               />
