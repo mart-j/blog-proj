@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import { RootState } from '../../store';
 import { updateCommentsAction } from '../../store/commentsStore/actions';
 import { Comment } from '../../store/commentsStore/types';
@@ -27,7 +28,7 @@ export const Comments = () => {
 
   const dispatch = useDispatch();
 
-  const removeCommentHandler = (uId: number) => {
+  const removeCommentHandler = (uId: number | string) => {
     const newComments = [...comments];
     const currComm = newComments.find((comment) => {
       return comment.id === uId;
@@ -84,6 +85,7 @@ export const Comments = () => {
                   body: e.target.value,
                   email: user,
                   postId: Number(id),
+                  id: uuidv4(),
                 });
               }}
             ></textarea>

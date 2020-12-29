@@ -25,13 +25,13 @@ export const Users: FC = () => {
             ? currentUser.substring(0, currentUser.indexOf('@'))
             : currentUser}
         </div>
+        {currentUser !== 'guest' && (
+          <button className={styles.button} onClick={singOutHandler}>
+            Sign out
+          </button>
+        )}
       </div>
-
-      {currentUser !== 'guest' && (
-        <button className={styles.button} onClick={singOutHandler}>
-          Sign out
-        </button>
-      )}
+        
     </div>
   );
 };

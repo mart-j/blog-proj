@@ -15,7 +15,6 @@
   padding-bottom: 3px;
   cursor: pointer;
   width: 67px;
-  position: absolute;
   top: 45px;
   font-size: 14px;
   background: none;
@@ -28,6 +27,10 @@
 
 .currentUserWrapper {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
 }
 .currentUser {
   opacity: 0;

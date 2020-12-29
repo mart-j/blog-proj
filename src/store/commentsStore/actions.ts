@@ -21,7 +21,6 @@ export const getComment = (dispatch: Dispatch, comments: Comment[]) => {
     axios
       .get('https://jsonplaceholder.typicode.com/comments')
       .then(({ data }) => {
-        console.log('iesuucu datus!');
         dispatch(getCommentsAction(data));
       });
   }

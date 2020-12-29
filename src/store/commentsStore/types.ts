@@ -12,7 +12,7 @@ export interface AllActions extends InitialCommentsStore {
 
 export type Comment = {
   postId: number;
-  id?: number;
+  id?: number | string;
   name?: string;
   email: string;
   body: string;
