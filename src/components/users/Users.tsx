@@ -11,7 +11,7 @@ export const Users: FC = () => {
   const dispatch = useDispatch();
 
   const currentUser = useSelector((state: RootState) => {
-    return state.userStore.user.email;
+    return state.users.user.email;
   });
   const singOutHandler = () => {
     dispatch(changeUserAction(initialUserStore.user));

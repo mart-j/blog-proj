@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Home } from './pages/Home';
@@ -8,12 +8,13 @@ import { FourOuFour } from './pages/_404';
 import { Header } from './components/header/Header';
 import { getPost } from './store/postsStore/actions';
 
-const App: FC = () => {
+const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     getPost(dispatch);
   }, []);
+
   return (
     <Router>
       <Header />

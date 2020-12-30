@@ -1,3 +1,3 @@
 import { commentsReducer } from './reducer';
 
-export const commentsStore = commentsReducer;
+export default commentsReducer;

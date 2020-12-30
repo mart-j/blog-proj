@@ -9,7 +9,7 @@ export const ReadNextList = () => {
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
   const articles = useSelector((state: RootState) => {
-    return state.postsStore.posts;
+    return state.posts.posts;
   });
   const suggestedArticles = articles.filter(
     (post) => post.id > Number(id) && post.id <= Number(id) + 3,

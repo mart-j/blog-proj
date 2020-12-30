@@ -9,7 +9,7 @@
   border: none;
   padding-right: 43px;
   background-color: rgba(10, 140, 180, 0.267);
-  border-radius: 4px;
+  border-radius: 1px;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.404);
   &::placeholder {
     font-size: 15px;
@@ -30,7 +30,7 @@
 }
 
 .searchIconWrapper {
-  border-radius: 0px 4px 4px 0;
+  border-radius: 0px 1px 1px 0;
   width: 40px;
   height: 100%;
   background-color: #27707c;

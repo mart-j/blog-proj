@@ -1,12 +1,12 @@
 import { combineReducers, createStore } from 'redux';
-import { postsStore } from './postsStore/store';
-import { commentsStore } from './commentsStore/store';
-import { userStore } from './userStore/store';
+import posts from './postsStore';
+import comments from './commentsStore';
+import users from './userStore';
 
 const combinedReducers = combineReducers({
-  postsStore,
-  commentsStore,
-  userStore,
+  posts,
+  comments,
+  users,
 });
 
 const RootStore = createStore(combinedReducers);

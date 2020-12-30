@@ -13,11 +13,11 @@ export const Comments = () => {
   const textArea = useRef<HTMLTextAreaElement>(null);
 
   const comments = useSelector((state: RootState) => {
-    return state.commentsStore.comments;
+    return state.comments.comments;
   });
 
   const user = useSelector((state: RootState) => {
-    return state.userStore.user.email;
+    return state.users.user.email;
   });
 
   const { id } = useParams<{ id: string }>();

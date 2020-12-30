@@ -16,10 +16,10 @@ export const LoginForm = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state: RootState) => {
-    return state.userStore.user;
+    return state.users.user;
   });
   const userDb = useSelector((state: RootState) => {
-    return state.userStore.userDb;
+    return state.users.userDb;
   });
 
   const history = useHistory();

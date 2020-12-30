@@ -8,7 +8,12 @@ interface Props {
   textColor?: string;
 }
 
-export const Button: FC<Props> = ({ textColor, clickHandler, label, stripeColor }) => {
+export const Button: FC<Props> = ({
+  textColor,
+  clickHandler,
+  label,
+  stripeColor,
+}) => {
   return (
     <button
       style={{ borderColor: stripeColor, color: textColor }}

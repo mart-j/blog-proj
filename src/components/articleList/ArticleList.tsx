@@ -12,7 +12,7 @@ export const ArticleList = () => {
   const history = useHistory();
 
   const articles = useSelector((state: RootState) => {
-    return state.postsStore.posts;
+    return state.posts.posts;
   });
 
   const filterdArticles = articles.filter((article) => {
