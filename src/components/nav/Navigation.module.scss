@@ -1,8 +1,9 @@
 $navColor: #fff;
 $navactiveColor: #0af4ff;
+$width: 33.333%;
 
 .navigation {
-  width: 33.333%;
+  width: $width;
   text-align: center;
 }
 .navItem {

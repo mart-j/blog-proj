@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import _ from 'lodash';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +7,7 @@ import { changeUserAction } from '../../store/userStore/actions';
 import styles from './LoginForm.module.scss';
 import { Button } from '../button/Button';
 
-export const LoginForm = () => {
+export const LoginForm: FC = () => {
   const [loginDetailsInput, setLoginDetailsInput] = useState({
     email: '',
     password: '',

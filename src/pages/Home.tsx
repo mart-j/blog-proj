@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { ArticleList } from '../components/articleList/ArticleList';
 
-export const Home = () => {
+export const Home: FC = () => {
   return <ArticleList />;
 };

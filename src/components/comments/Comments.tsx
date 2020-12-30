@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
@@ -8,7 +8,7 @@ import { Comment } from '../../store/commentsStore/types';
 import { Button } from '../button/Button';
 import styles from './Comments.module.scss';
 
-export const Comments = () => {
+export const Comments: FC = () => {
   const [commentInput, setCommentInput] = useState<Comment>();
   const textArea = useRef<HTMLTextAreaElement>(null);
 

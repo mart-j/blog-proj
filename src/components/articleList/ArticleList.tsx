@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
@@ -6,7 +6,7 @@ import styles from './ArticleList.module.scss';
 import searchIcon from '../../assets/search.svg';
 import { Button } from '../button/Button';
 
-export const ArticleList = () => {
+export const ArticleList: FC = () => {
   const [searchValue, setSearchValue] = useState<string>();
 
   const history = useHistory();

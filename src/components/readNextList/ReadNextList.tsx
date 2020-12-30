@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { RootState } from '../../store';
 import { Button } from '../button/Button';
 import styles from './ReadNextList.module.scss';
 
-export const ReadNextList = () => {
+export const ReadNextList: FC = () => {
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
   const articles = useSelector((state: RootState) => {

@@ -7,14 +7,12 @@ import { updatePostAction } from '../../store/postsStore/actions';
 import { Button } from '../button/Button';
 import styles from './Article.module.scss';
 
-type ArticleInput = {
-  title: string;
-  paragraph: string;
-};
-
-export const Article: FC = () => {
+export const Article: FC  = () => {
   const [isEditActive, setIsEditActive] = useState(false);
-  const [editInput, setEditInput] = useState<ArticleInput>();
+  const [editInput, setEditInput] = useState({
+    title: '',
+    paragraph: '',
+  });
 
   const dispatch = useDispatch();
 
@@ -40,40 +38,14 @@ export const Article: FC = () => {
     history.push('/');
   };
 
-  useEffect(() => {
-    const dropTo404 = posts.some((article) => article.id === Number(id));
-    !dropTo404 && history.push('../404');
-  }, []);
-
-  // const editTitleHandler = () => {
-  //   setEditTitleInput(post!.title);
-  //   const newPosts = [...posts];
-  //   const editIndex = newPosts.indexOf(post!);
-  //   newPosts[editIndex].title = editTitleInput!;
-  //   dispatch(updatePostAction(newPosts));
-  //   setIsTitleEditActive(!isTitleEditActive);
-  // };
-
-  // const editArticleHandler = () => {
-  //   setEditArticleInput(post!.body);
-  //   const newPosts = [...posts];
-  //   const editIndex = newPosts.indexOf(post!);
-  //   newPosts[editIndex].body = editArticleInput!;
-  //   dispatch(updatePostAction(newPosts));
-  //   setIsArticleEditActive(!isArticleEditActive);
-  // };
-
   const editHandler = () => {
-    if (post) {
-      const newPosts = [...posts];
-      setEditInput({ title: post!.title, paragraph: post!.body });
-      const editIndex = newPosts.indexOf(post!);
-      console.log(editInput?.title);
-      newPosts[editIndex].title = editInput!.title!;
-      newPosts[editIndex].body = editInput!.paragraph;
-      dispatch(updatePostAction(newPosts));
-      setIsEditActive(!isEditActive);
-    }
+    setEditInput({ title: post!.title, paragraph: post!.body });
+    const newPosts = [...posts];
+    const editIndex = newPosts.indexOf(post!);
+    newPosts[editIndex].title = editInput!.title!;
+    newPosts[editIndex].body = editInput!.paragraph;
+    dispatch(updatePostAction(newPosts));
+    setIsEditActive(!isEditActive);
   };
 
   useEffect(() => {

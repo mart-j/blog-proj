@@ -2,8 +2,8 @@ import { CHANGE_USER, AllActions, InitialUserStore } from './types';
 
 export const initialUserStore: InitialUserStore = {
   user: {
-    email: 'guest',
-    password: '',
+    email: 'admin@admin.com',
+    password: 'admin',
   },
   userDb: [
     {
