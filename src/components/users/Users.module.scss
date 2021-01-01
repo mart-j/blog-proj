@@ -9,7 +9,6 @@
   align-items: center;
   position: relative;
   flex-direction: column;
-
 }
 
 .currentUserWrapper {
@@ -17,8 +16,8 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-
 }
+
 .currentUser {
   opacity: 0;
   padding: 10px;
@@ -29,8 +28,9 @@
   top: 50%;
   transform: translate(40px, -50%);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.247);
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
+
 .currentUserWrapper:hover .currentUser {
   opacity: 1;
 }

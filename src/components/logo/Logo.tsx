@@ -4,10 +4,12 @@ import styles from './Logo.module.scss';
 
 export const Logo: FC = () => {
   const history = useHistory();
+
   const backToHomeHandler = () => {
     history.push('/');
     window.scrollTo(0, 0);
   };
+
   return (
     <div className={styles.container}>
       <div onClick={backToHomeHandler} className={styles.logoWrapper}>

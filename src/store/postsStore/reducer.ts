@@ -4,7 +4,7 @@ export const initialStore: { posts: Post[] } = {
   posts: [],
 };
 
-export const reducer = (state = initialStore, action: AllActions) => {
+export const postsReducer = (state = initialStore, action: AllActions) => {
   switch (action.type) {
     case GET_POSTS: {
       return { ...state, posts: action.posts };

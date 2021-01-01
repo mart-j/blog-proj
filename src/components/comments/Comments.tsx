@@ -10,6 +10,7 @@ import styles from './Comments.module.scss';
 
 export const Comments: FC = () => {
   const [commentInput, setCommentInput] = useState<Comment>();
+
   const textArea = useRef<HTMLTextAreaElement>(null);
 
   const comments = useSelector((state: RootState) => {

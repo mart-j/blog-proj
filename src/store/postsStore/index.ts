@@ -1,3 +1,3 @@
-import { reducer } from './reducer';
+import { postsReducer } from './reducer';
 
-export default reducer;
+export default postsReducer;

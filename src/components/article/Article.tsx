@@ -7,8 +7,9 @@ import { updatePostAction } from '../../store/postsStore/actions';
 import { Button } from '../button/Button';
 import styles from './Article.module.scss';
 
-export const Article: FC  = () => {
+export const Article: FC = () => {
   const [isEditActive, setIsEditActive] = useState(false);
+
   const [editInput, setEditInput] = useState({
     title: '',
     paragraph: '',
@@ -27,7 +28,9 @@ export const Article: FC  = () => {
   });
 
   const { comments } = rootStore;
+
   const { posts } = rootStore;
+
   const { user } = rootStore;
 
   const history = useHistory();
@@ -49,6 +52,9 @@ export const Article: FC  = () => {
   };
 
   useEffect(() => {
+    if (Number(id) > 100 || Number(id) === 0) {
+      history.push('/404');
+    }
     getComment(dispatch, comments);
     window.scrollTo(0, 0);
   }, []);

@@ -6,6 +6,7 @@ $logoColor: #fff;
   display: flex;
   justify-content: center;
 }
+
 .logoWrapper {
   width: 80px;
   text-align: center;
@@ -13,16 +14,19 @@ $logoColor: #fff;
   position: relative;
   cursor: pointer;
 }
+
 .logoSquare {
   position: absolute;
   width: 80px;
   height: 80px;
   border: 1px solid $logoColor;
 }
+
 .logoSquare:last-child {
   right: -7px;
   top: 7px;
 }
+
 .logoText {
   color: $logoColor;
   font-size: 14px;

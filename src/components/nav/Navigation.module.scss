@@ -6,15 +6,18 @@ $width: 33.333%;
   width: $width;
   text-align: center;
 }
+
 .navItem {
   color: $navColor;
   text-decoration: none;
   font-size: 22px;
 }
+
 .active {
   color: $navactiveColor;
   font-weight: 600;
 }
+
 .navItem:first-child {
   margin-right: 10px;
 }
