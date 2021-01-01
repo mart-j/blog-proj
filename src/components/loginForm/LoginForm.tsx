@@ -25,9 +25,10 @@ export const LoginForm: FC = () => {
 
   const history = useHistory();
 
-  const dispatchHandler = () => {
+  const loginHandler = () => {
     if (_.some(userDb, loginDetailsInput)) {
       dispatch(changeUserAction(loginDetailsInput));
+      localStorage.setItem('users', JSON.stringify(loginDetailsInput));
       history.push('/');
     }
   };
@@ -39,7 +40,7 @@ export const LoginForm: FC = () => {
           className={styles.loginForm}
           onSubmit={(e) => {
             e.preventDefault();
-            dispatchHandler();
+            loginHandler();
             setLoginDetailsInput({ email: '', password: '' });
           }}
         >

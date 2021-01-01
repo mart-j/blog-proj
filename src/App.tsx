@@ -7,11 +7,20 @@ import { Login } from './pages/Login';
 import { FourOuFour } from './pages/_404';
 import { Header } from './components/header/Header';
 import { getPost } from './store/postsStore/actions';
+import { changeUserAction } from './store/userStore/actions';
 
 const App = () => {
   const dispatch = useDispatch();
 
+  const setUser = () => {
+    if (localStorage.users) {
+      const loginDetailsInput = JSON.parse(localStorage.users);
+      dispatch(changeUserAction(loginDetailsInput));
+    }
+  };
+
   useEffect(() => {
+    setUser();
     getPost(dispatch);
   }, []);
 

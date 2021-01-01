@@ -15,17 +15,14 @@ export const Users: FC = () => {
   });
   const singOutHandler = () => {
     dispatch(changeUserAction(initialUserStore.user));
+    localStorage.users = JSON.stringify(initialUserStore.user);
   };
 
   return (
     <div className={styles.mainWrapper}>
       <div className={styles.currentUserWrapper}>
         <img className={styles.userIcon} src={userIcon} alt="user icon" />
-        <div className={styles.currentUser}>
-          {currentUser.indexOf('@') !== -1
-            ? currentUser.substring(0, currentUser.indexOf('@'))
-            : currentUser}
-        </div>
+        <div className={styles.currentUser}>{currentUser}</div>
       </div>
       {currentUser !== 'guest' && (
         <>
