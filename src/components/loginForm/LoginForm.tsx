@@ -78,7 +78,7 @@ export const LoginForm: FC = () => {
           <Button label="Submit" />
         </form>
       ) : (
-        'You are already signed in!'
+        <h3>You are already logged in!</h3>
       )}
     </div>
   );
