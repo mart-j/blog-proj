@@ -9,7 +9,6 @@ $primaryColor: #27707c;
 
 .header {
   display: flex;
-  justify-content: space-around;
   align-items: center;
   max-width: 1400px;
   margin: auto;
@@ -17,8 +16,15 @@ $primaryColor: #27707c;
   margin-bottom: 40px;
   padding-top: 15px;
   padding-bottom: 15px;
-  width: auto;
+  width: 100%;
 }
+
+.logoWrapper,
+.navigationWrapper,
+.usersWrapper {
+  width: 33.3333%;
+}
+
 .errorMessage {
   text-align: center;
   font-size: 40px;

@@ -1,4 +1,4 @@
-import { CHANGE_USER, AllActions, InitialUserStore } from './types';
+import { CHANGE_USER, ChangeUserAction, InitialUserStore } from './types';
 
 export const initialUserStore: InitialUserStore = {
   user: {
@@ -17,7 +17,10 @@ export const initialUserStore: InitialUserStore = {
   ],
 };
 
-export const userReducer = (state = initialUserStore, action: AllActions) => {
+export const userReducer = (
+  state = initialUserStore,
+  action: ChangeUserAction,
+) => {
   switch (action.type) {
     case CHANGE_USER: {
       return { ...state, user: action.user };

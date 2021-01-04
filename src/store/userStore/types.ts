@@ -5,9 +5,10 @@ export type InitialUserStore = {
   userDb: User[];
 };
 
-export interface AllActions extends InitialUserStore {
+export type ChangeUserAction = {
   type: typeof CHANGE_USER;
-}
+  user: User;
+};
 
 export type User = {
   email: string;

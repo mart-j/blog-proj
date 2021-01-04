@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { GET_POSTS, Post, UPDATE_POST } from './types';
+import { EditInput, GET_POSTS, Post, UPDATE_POST } from './types';
 
 const getPostsAction = (posts: Post[]) => {
   return {
@@ -9,10 +9,11 @@ const getPostsAction = (posts: Post[]) => {
   };
 };
 
-export const updatePostAction = (posts: Post[]) => {
+export const updatePostAction = (editInput: EditInput, id:number) => {
   return {
     type: UPDATE_POST,
-    posts,
+    editInput,
+    id,
   };
 };
 

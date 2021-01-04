@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Home } from './pages/Home';
 import { ArticlePage } from './pages/ArticlePage';
@@ -11,6 +11,8 @@ import { changeUserAction } from './store/userStore/actions';
 
 const App = () => {
   const dispatch = useDispatch();
+
+  const location = useLocation();
 
   const setUser = () => {
     if (localStorage.users) {
@@ -24,8 +26,12 @@ const App = () => {
     getPost(dispatch);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
-    <Router>
+    <>
       <Header />
       <Switch>
         <Route exact path="/">
@@ -41,7 +47,7 @@ const App = () => {
           <FourOuFour />
         </Route>
       </Switch>
-    </Router>
+    </>
   );
 };
 export default App;

@@ -8,9 +8,15 @@ export const Header: FC = () => {
   return (
     <div className={styles.headerWrapper}>
       <header className={styles.header}>
-        <Logo />
-        <Navigation />
-        <Users />
+        <div className={styles.logoWrapper}>
+          <Logo />
+        </div>
+        <div className={styles.navigationWrapper}>
+          <Navigation />
+        </div>
+        <div className={styles.usersWrapper}>
+          <Users />
+        </div>
       </header>
     </div>
   );

@@ -10,7 +10,12 @@ export const postsReducer = (state = initialStore, action: AllActions) => {
       return { ...state, posts: action.posts };
     }
     case UPDATE_POST: {
-      return { ...state, posts: action.posts };
+      const newPosts = [...state.posts];
+      const post = newPosts.find((element) => element.id === action.id);
+      const editIndex = newPosts.indexOf(post!);
+      newPosts[editIndex].title = action.editInput.title;
+      newPosts[editIndex].body = action.editInput.paragraph;
+      return { ...state, posts: newPosts };
     }
     default:
       return state;

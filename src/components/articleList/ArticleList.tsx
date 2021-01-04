@@ -7,7 +7,7 @@ import searchIcon from '../../assets/search.svg';
 import { Button } from '../button/Button';
 
 export const ArticleList: FC = () => {
-  const [searchValue, setSearchValue] = useState<string>();
+  const [searchValue, setSearchValue] = useState<string>('');
 
   const history = useHistory();
 
@@ -17,8 +17,9 @@ export const ArticleList: FC = () => {
 
   const filterdArticles = articles.filter((article) => {
     if (searchValue) {
-      return article.title.toLowerCase().includes(searchValue!.toLowerCase());
+      return article.title.toLowerCase().includes(searchValue.toLowerCase());
     }
+
     return article;
   });
 
@@ -34,7 +35,8 @@ export const ArticleList: FC = () => {
     <div className={styles.articleListWrapper}>
       <h1 className={styles.heading}>Latest stories</h1>
       <div className={styles.searchWrapper}>
-        <input
+        <input // ? input component?
+          value={searchValue}
           placeholder="Search..."
           className={styles.searchField}
           type="search"

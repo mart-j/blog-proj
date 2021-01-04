@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { RootState } from '../../store';
 import { Button } from '../button/Button';
-import styles from './ReadNextList.module.scss';
+import styles from './RelatedArticles.module.scss';
 
-export const ReadNextList: FC = () => {
+export const RelatedArticles: FC = () => {
   const history = useHistory();
 
   const { id } = useParams<{ id: string }>();
@@ -22,7 +22,7 @@ export const ReadNextList: FC = () => {
     history.push(`/articles/${articleId}`);
   };
 
-  const cutTitleLength = (number: number, text: string) => {
+  const truncateText = (number: number, text: string) => {
     return `${text.substring(0, number)}...`;
   };
 
@@ -35,7 +35,7 @@ export const ReadNextList: FC = () => {
             <div className={styles.articleWrapper} key={`${i}`}>
               <div>
                 <div className={styles.title}>
-                  {cutTitleLength(30, article.title)}
+                  {truncateText(30, article.title)}
                 </div>
                 <p className={styles.paragraph}>{article.body}</p>
               </div>

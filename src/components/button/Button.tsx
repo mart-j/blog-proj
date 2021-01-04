@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import styles from './Button.module.scss';
 
 interface Props {
+  type?: 'submit' | 'button';
   label: string;
   clickHandler?: () => void;
   stripeColor?: string;
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export const Button: FC<Props> = ({
+  type = 'button',
   textColor,
   clickHandler,
   label,
@@ -17,7 +19,7 @@ export const Button: FC<Props> = ({
   return (
     <button
       style={{ borderColor: stripeColor, color: textColor }}
-      type="submit"
+      type={type}
       onClick={clickHandler}
       className={styles.button}
     >

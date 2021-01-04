@@ -19,19 +19,13 @@ export const Article: FC = () => {
 
   const { id } = useParams<{ id: string }>();
 
-  const rootStore = useSelector((state: RootState) => {
+  const { comments, posts, user } = useSelector((state: RootState) => {
     return {
       posts: state.posts.posts,
       comments: state.comments.comments,
       user: state.users.user.email,
     };
   });
-
-  const { comments } = rootStore;
-
-  const { posts } = rootStore;
-
-  const { user } = rootStore;
 
   const history = useHistory();
 
@@ -42,65 +36,57 @@ export const Article: FC = () => {
   };
 
   const editHandler = () => {
-    setEditInput({ title: post!.title, paragraph: post!.body });
-    const newPosts = [...posts];
-    const editIndex = newPosts.indexOf(post!);
-    newPosts[editIndex].title = editInput!.title!;
-    newPosts[editIndex].body = editInput!.paragraph;
-    dispatch(updatePostAction(newPosts));
-    setIsEditActive(!isEditActive);
+    if (post) {
+      setEditInput({ title: post.title, paragraph: post.body });
+      dispatch(updatePostAction(editInput, Number(id)));
+      setIsEditActive(!isEditActive);
+    }
   };
 
   useEffect(() => {
-    if (Number(id) > 100 || Number(id) === 0) {
-      history.push('/404');
-    }
     getComment(dispatch, comments);
-    window.scrollTo(0, 0);
   }, []);
 
   return (
-    <>
-      <div className={styles.articleWrapper}>
-        <div>
-          {!isEditActive ? (
-            <h4 className={styles.articleTitle}>{post?.title}</h4>
-          ) : (
-            <textarea
-              className={styles.textArea}
-              onChange={(e) => {
-                setEditInput({ ...editInput!, title: e.target.value });
-              }}
-              value={editInput!.title}
-            />
-          )}
-        </div>
-        <div>
-          {!isEditActive ? (
-            <p className={styles.paragraph}>{post?.body}</p>
-          ) : (
-            <textarea
-              className={styles.paragraphTextArea}
-              onChange={(e) => {
-                setEditInput({ ...editInput!, paragraph: e.target.value });
-              }}
-              value={editInput!.paragraph}
-            />
-          )}
-          {user === 'admin@admin.com' && (
-            <div className={styles.editButtonWrapper}>
-              <Button
-                stripeColor="red"
-                label={isEditActive ? 'Save' : 'Edit'}
-                clickHandler={editHandler}
-              />
-            </div>
-          )}
-        </div>
-        <div className={styles.backButtonWrapper}>
-          <Button label="Back to home" clickHandler={backButtonHandler} />
-        </div>
+    <div className={styles.articleWrapper}>
+      <div>
+        {!isEditActive && post ? (
+          <h4 className={styles.articleTitle}>{post.title}</h4>
+        ) : (
+          <textarea
+            className={styles.textArea}
+            onChange={(e) => {
+              setEditInput({ ...editInput, title: e.target.value });
+            }}
+            value={editInput!.title}
+          />
+        )}
       </div>
-    </>
+      <div>
+        {!isEditActive && post ? (
+          <p className={styles.paragraph}>{post.body}</p>
+        ) : (
+          <textarea
+            className={styles.paragraphTextArea}
+            onChange={(e) => {
+              setEditInput({ ...editInput, paragraph: e.target.value });
+            }}
+            value={editInput!.paragraph}
+          />
+        )}
+        {user === 'admin@admin.com' && (
+          <div className={styles.editButtonWrapper}>
+            <Button
+              stripeColor="red"
+              label={isEditActive ? 'Save' : 'Edit'}
+              clickHandler={editHandler}
+            />
+          </div>
+        )}
+      </div>
+      <div className={styles.backButtonWrapper}>
+        <Button label="Back to home" clickHandler={backButtonHandler} />
+      </div>
+    </div>
   );
 };

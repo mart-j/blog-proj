@@ -15,12 +15,8 @@ export const LoginForm: FC = () => {
 
   const dispatch = useDispatch();
 
-  const user = useSelector((state: RootState) => {
-    return state.users.user;
-  });
-
-  const userDb = useSelector((state: RootState) => {
-    return state.users.userDb;
+  const { user, userDb } = useSelector((state: RootState) => {
+    return { user: state.users.user, userDb: state.users.userDb };
   });
 
   const history = useHistory();
@@ -75,7 +71,7 @@ export const LoginForm: FC = () => {
           />
           <br />
           <br />
-          <Button label="Submit" />
+          <Button label="Submit" type="submit" />
         </form>
       ) : (
         <h3>You are already logged in!</h3>

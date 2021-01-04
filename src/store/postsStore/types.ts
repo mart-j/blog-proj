@@ -5,8 +5,21 @@ export type InitialStore = {
   posts: Post[];
 };
 
-export interface AllActions extends InitialStore {
-  type: typeof GET_POSTS | typeof UPDATE_POST;
-}
+export type EditInput = {
+  title: string;
+  paragraph: string;
+};
+export type UpdatePostAction = {
+  type: typeof UPDATE_POST;
+  editInput: EditInput;
+  id: number;
+};
+
+export type GetPostsAction = {
+  type: typeof GET_POSTS;
+  posts: Post[];
+};
+
+export type AllActions = UpdatePostAction | GetPostsAction;
 
 export type Post = { userId: number; id: number; title: string; body: string };
